@@ -8,10 +8,9 @@
 [GitHub](https://github.com/WilliamLopez5/SA_Tarea2_200711904/tree/master "GitHub")
 
 **Lenguaje de programación utilizado:**  
-C# con Microsoft Visual Studio 2019
+Python 2.7.4       Framework: FLASK
 
-**Servidor:**  
-IIS EXPRESS ( proporcionado por Visual Studio 2019 )
+
 
 **Sistema Operativo**
 Windows 10
