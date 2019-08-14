@@ -8,11 +8,12 @@ Importación de librerias a utilizar para realización de las API's.
 """
 from flask import Flask
 from flask_restful import Resource, Api
+import requests
 
 app = Flask(__name__)
 api = Api(app)
 notificaciones = []
-notificaciones.append({"name": "Frank", "age": 39})
+notificaciones.append({"name": "Cliente"})
 
 
 """
@@ -27,8 +28,11 @@ class ClienteSolicitud(Resource):
     un servicio de transporte UBER.
     """
     def get(self, id):
-        respuesta = "Pendiente confirmación, favor de esperar la notificación "
-        respuesta += "de confirmación de servicio"
+        notificaciones.append({"Notificacion": "Pendiente de asignar piloto"})
+        respuesta = "Pendiente confirmacion, favor de esperar la notificacion "
+        respuesta += "de confirmacion de servicio"
+        direccion = 'http://localhost:5000/esb/rastreo/piloto/solicitar/' + id
+        info = requests.get(direccion)
         return {"Solicitud recibida": respuesta}
 
 
@@ -60,8 +64,8 @@ class ClienteNotifSave(Resource):
     Método para devolver las noficaciones a traves del método get hacia el
     cliente.
     """
-    def get(self, id):
-        notificaciones.append({"name": "Frank", "age": 39})
+    def get(self, id, texto):
+        notificaciones.append({id: texto})
         return {"Notificacion": "Ha sido almacenada correctamente"}
 
 """
@@ -69,7 +73,7 @@ Direcciones habilitadas para los clientes.
 """
 api.add_resource(ClienteSolicitud, '/cliente/solicitar/<id>')
 api.add_resource(ClienteNotifView, '/cliente/notifview/<id>')
-api.add_resource(ClienteNotifSave, '/cliente/notifsave/<id>')
+api.add_resource(ClienteNotifSave, '/cliente/notifsave/<id>/<texto>')
 
 """
 Comando que levantara el servidor en el puerto 5010.

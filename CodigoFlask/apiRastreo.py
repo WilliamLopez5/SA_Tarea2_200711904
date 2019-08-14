@@ -8,9 +8,28 @@ Importación de librerias a utilizar para realización de las API's.
 """
 from flask import Flask
 from flask_restful import Resource, Api
+import requests
 
 app = Flask(__name__)
 api = Api(app)
+
+
+"""
+Clase que se encargará de determinar al mejor piloto para brindar
+el servicio dependiendo de su posición
+"""
+
+
+class RastreoGetPiloto(Resource):
+    """
+    Método para determinar cual es el piloto mas optimo a brindar el servicio.
+    """
+    def get(self, id):
+        respuesta = "Pendiente confirmacion, favor de esperar la notificacion "
+        respuesta += "de confirmacion de servicio"
+        direccion = 'http://localhost:5000/esb/piloto/solicitar/' + id
+        info = requests.get(direccion)
+        return {"piloto": "25"}
 
 
 """
@@ -43,24 +62,12 @@ class RastreoPosPiloto(Resource):
 
 
 """
-Clase que se encargará de determinar al mejor piloto para brindar
-el servicio dependiendo de su posición
-"""
-
-
-class RastreoGetPiloto(Resource):
-    """
-    Método para determinar cual es el piloto mas optimo a brindar el servicio.
-    """
-    def get(self, id):
-        return {"piloto": "25"}
-
-"""
 Direcciones habilitadas para solicitar Rastreo.
 """
-api.add_resource(RastreoPosCliente, '/rastreo/posicion/cliente/<id>')
+api.add_resource(RastreoGetPiloto, '/rastreo/get/piloto/<id>')
 api.add_resource(RastreoPosPiloto, '/rastreo/posicion/piloto/<id>')
-api.add_resource(RastreoGetPiloto, '/rastreo/posicion/piloto/<id>')
+api.add_resource(RastreoPosCliente, '/rastreo/posicion/cliente/<id>')
+
 
 """
 Comando que levantara el servidor en el puerto 5030.
