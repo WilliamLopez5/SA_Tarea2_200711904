@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Documentacion</title>
+<title>SA_Tarea2_200711904_Documentacion</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -297,12 +297,14 @@ img {
 <h3>Carne: 200711904</h3>
 <p><strong>Dirección de GitHub</strong><br />
 <a href="https://github.com/WilliamLopez5/SA_Tarea2_200711904/tree/master" title="GitHub">GitHub</a></p>
+<p><strong>Dirección del Video</strong><br />
+<a href="https://youtu.be/_gdLvQuUsgw" title="YouTube">YouTube</a></p>
 <p><strong>Lenguaje de programación utilizado:</strong><br />
-C# con Microsoft Visual Studio 2019</p>
-<p><strong>Servidor:</strong><br />
-IIS EXPRESS ( proporcionado por Visual Studio 2019 )</p>
+Python 2.7.4       Framework: FLASK</p>
 <p><strong>Sistema Operativo</strong>
 Windows 10</p>
+<p><strong>Interacción de los componentes</strong>
+El Cliente realiza una peticion Get a través de internet al sistema, el Orquestados ESB recibe la petición y la redirecciona al microservicio de &quot;CLiente&quot;. La API cliente solicita al microservicio &quot;Piloto&quot; un piloto. Esta API determina que para poder brindar el servicio de transporte necesita ubicar al piloto con la ubicación mas cercana al cliente, por lo que le solicita a traves dle ESB al API de &quot;Rastreo&quot; que le notifique al piloto mas cercano, luego el sistema de Rastreo le Avisa a los microservicios de Clientes y Pilotos que ya le pueden avisar al piloto que ha sido asignado un viaje y al cliente que ya tiene asignado un piloto, segun corresponda a cada API.</p>
 <h3>Diagrama de la solucion MICROSERVICIOS</h3>
 <hr />
 <p><img src="img/d1.png" alt="Diagrama" title="Diagrama" /></p>
